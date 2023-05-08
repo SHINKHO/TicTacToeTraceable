@@ -38,14 +38,7 @@ public class TicTacToe {
     }
 
     // Function to play a move
-    public static boolean playMove(char[][] board, char player, int row, int col) {
-        if (board[row][col] == '-') {
-            board[row][col] = player;
-            return true;
-        } else {
-            return false;
-        }
-    }
+
 
     // Function to get a list of possible moves
     public static ArrayList<int[]> getPossibleMoves(char[][] board) {
@@ -67,10 +60,7 @@ public class TicTacToe {
         printBoard(board);
 
         // Randomly choose who goes first
-        char[] players = {'X', 'O'};
-        Random rand = new Random();
-        char current_player = players[rand.nextInt(2)];
-        System.out.println("Player " + current_player + " goes first");
+
 
         // Loop until someone wins or the board is full
         while (!checkWin(board, 'X') && !checkWin(board, 'O') && Arrays.asList(board).contains('-')) {
