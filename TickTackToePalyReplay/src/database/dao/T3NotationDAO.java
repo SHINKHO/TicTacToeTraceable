@@ -45,6 +45,7 @@ public class T3NotationDAO {
 		query.append(" FROM t3_notation " );
 		query.append(" WHERE 1=1 ");
 		query.append(" AND game_id = ? " );
+		query.append(" ORDER BY notation_id " );
 		PreparedStatement ps = conn.prepareStatement(query.toString());
 		ps.setString(1, gameId);
 		ResultSet rs = ps.executeQuery();

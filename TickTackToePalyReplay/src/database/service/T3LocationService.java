@@ -55,4 +55,16 @@ public class T3LocationService {
 		}
 		return result;
 	}
+	public int resetLocation() {
+		Connection conn =cp.getConnection();
+		int result= -1;
+		try {
+			result =dao.resetLocation(conn);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			cp.releaseConnection(conn);
+		}
+		return result;
+	}
 }

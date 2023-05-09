@@ -60,6 +60,17 @@ public class T3LocationDAO {
 		int result = ps.executeUpdate();
 		return result;
 	}
+	
+	public int resetLocation(Connection conn)throws SQLException{
+		StringBuffer query = new StringBuffer();
+		query.append(" DELETE FROM t3_location ");
+		query.append(" WHERE 1=1 ");
+
+		PreparedStatement ps = conn.prepareStatement(query.toString());
+		
+		int result = ps.executeUpdate();
+		return result;
+	}
 
 
 	
