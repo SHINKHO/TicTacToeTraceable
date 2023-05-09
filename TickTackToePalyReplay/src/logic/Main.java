@@ -132,7 +132,6 @@ public class Main {
 				}
 			}while(userNameInput.length()>6||userNameInput.length()<3);
 			 
-			 T3UserVO player;
 			 //log in 
 			if(!(us.getUserId(userNameInput)==null)) {
 				userName = userNameInput;
@@ -233,7 +232,6 @@ public class Main {
 		        
 		        //init players vo for timeline;
 		        T3UserVO user = new T3UserVO(userName,userId);
-		        T3UserVO com = new T3UserVO("0000000COM","COMPUTER");
 		        String winner,loser;
 		        // if player took O symbol ( player goes first) 
 		        if(player_team == 'O') {
