@@ -34,6 +34,22 @@ public class Main {
             System.out.println("-------------");
         }
     }
+    public static void printBoard(ArrayList<T3NotationVO> timeLine) {
+    	 char [][] reviewMap = {{'-','-','-'},{'-','-','-'},{'-','-','-'}};        char teamer ='O';
+        for(int i=0; i<timeLine.size(); i++) {
+            int loc = Integer.parseInt(timeLine.get(i).getLocationId());
+            int row = loc / 3;
+            int col = loc % 3;
+            reviewMap[row][col] = teamer;
+            teamer = (teamer == 'O') ? 'X' : 'O';
+
+            System.out.println("-------------");
+            for(int j=0; j<3; j++) {
+                System.out.print("| " + reviewMap[j][0] + " " + reviewMap[j][1] + " " + reviewMap[j][2] + " |\n");
+            }
+            System.out.println("-------------");
+        }
+    }
     public static boolean playMove(char[][] board, char team, int row, int col) {
         if (String.valueOf(board[row][col]).matches("[0-9]")) {
             board[row][col] = team;
@@ -185,22 +201,16 @@ public class Main {
 					System.out.println("there is no such game");
 				}else {
 					timeLine = ns.getNotationsByGame(foundGame.getGameId());
-					char [][] reviewMap = {{'-','-','-'},{'-','-','-'},{'-','-','-'}};
-					char teamer ='O';
-					for(int i=0; i<timeLine.size(); i++) {
-						System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
-						System.out.println(timeLine.get(i).getNotationId() + "phase,");
-						System.out.println(timeLine.get(i).getUserId() + "user");
-						System.out.println("placed at "+timeLine.get(i).getLocationId());
-						System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
-						
-//						int locX = ls.getLocation(timeLine.get(i).getLocationId()).get(1);
-//						int locY = ls.getLocation(timeLine.get(i).getLocationId()).get(0);
-//						playMove(reviewMap, teamer, locX, locY);
-//						printBoard(reviewMap);
-//						if(teamer =='O')teamer='X';
-//						if(teamer =='X')teamer='O';
-					}
+					printBoard(timeLine);
+//					char [][] reviewMap = {{'-','-','-'},{'-','-','-'},{'-','-','-'}};
+//					char teamer ='O';
+//					for(int i=0; i<timeLine.size(); i++) {
+//						System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
+//						System.out.println(timeLine.get(i).getNotationId() + "phase,");
+//						System.out.println(timeLine.get(i).getUserId() + "user");
+//						System.out.println("placed at "+timeLine.get(i).getLocationId());
+//						System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
+//					}
 					
 				}
 				
@@ -290,7 +300,7 @@ public class Main {
 		        }
 	
 		        //save
-		        if(user.getUserId()==null)us.addUser(userId,userName);
+		        if(us.getUserId(userName)==null)us.addUser(userId,userName);
 		        gs.insertGame(new Timestamp(System.currentTimeMillis()), winner, loser, gameId);
 		        
 	
