@@ -38,9 +38,9 @@ public class Main {
     	 char [][] reviewMap = {{'-','-','-'},{'-','-','-'},{'-','-','-'}};        char teamer ='O';
         for(int i=0; i<timeLine.size(); i++) {
             int loc = Integer.parseInt(timeLine.get(i).getLocationId());
-            int row = loc / 3;
-            int col = loc % 3;
-            reviewMap[row][col] = teamer;
+            int col = loc / 3;
+            int row = loc % 3;
+            reviewMap[col][row] = teamer;
             teamer = (teamer == 'O') ? 'X' : 'O';
 
             System.out.println("-------------");
@@ -51,8 +51,8 @@ public class Main {
         }
     }
     public static boolean playMove(char[][] board, char team, int row, int col) {
-        if (String.valueOf(board[row][col]).matches("[0-9]")) {
-            board[row][col] = team;
+        if (String.valueOf(board[col][row]).matches("[0-9]")) {
+            board[col][row] = team;
             return true;
         } else {
             return false;
