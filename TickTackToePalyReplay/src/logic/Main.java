@@ -51,8 +51,8 @@ public class Main {
         }
     }
     public static boolean playMove(char[][] board, char team, int row, int col) {
-        if (String.valueOf(board[col][row]).matches("[0-9]")) {
-            board[col][row] = team;
+        if (String.valueOf(board[row][col]).matches("[0-9]")) {
+            board[row][col] = team;
             return true;
         } else {
             return false;
